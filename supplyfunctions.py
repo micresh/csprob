@@ -1,5 +1,3 @@
-import sys
-
 def convert_base(num, to_base=10, from_base=10):
     # first convert to decimal number
     if isinstance(num, str):
