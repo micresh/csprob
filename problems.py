@@ -1,27 +1,23 @@
 import numpy as np
 
 
-def inf_counting_audio_filesize(problems_number):
-    ans = []
-    freq = [16, 32, 64, 128, 192, 256]
-    chan = [2, 4, 8]
-    bits = [8, 16, 32]
-    for i in range(problems_number):
-        curr_chan = np.random.choice(chan)
-        curr_freq = np.random.choice(freq)
-        curr_bits = np.random.choice(bits)
-        time = np.random.randint(1, 15)
-        pr = "Выполнена " + str(curr_chan) + \
-             "-канальная запись звука с частотой дискретизации " + str(curr_freq) + \
-             "кГц и разрешением " + str(curr_bits) + " бит. Какой объем (в мегабайтах) занимает файл," \
-                                                  " если запись проводилась " + str(time)
-        if time < 5:
-            pr += " минуты"
-        else:
-            pr += " минут"
-        ans.append(pr)
-        ans.append(curr_chan*(curr_bits/8)*curr_freq*1000*time*60//2**20)
-    return ans
+def inf_counting_audio_filesize(max_minutes):
+    freq = [16, 32, 64, 128, 192, 256]  # доступные частоты
+    chan = [2, 4, 8]  # доступное количество каналов
+    bits = [8, 16, 32]  # доступное разрешение канала записи
+    curr_chan = np.random.choice(chan)
+    curr_freq = np.random.choice(freq)
+    curr_bits = np.random.choice(bits)
+    time = np.random.randint(1, max_minutes)
+    pr = "Выполнена " + str(curr_chan) + \
+         "-канальная запись звука с частотой дискретизации " + str(curr_freq) + \
+         "кГц и разрешением " + str(curr_bits) + " бит. Какой объем (в мегабайтах) занимает файл," \
+                                              " если запись проводилась " + str(time)
+    if time < 5:
+        pr += " минуты"
+    else:
+        pr += " минут"
+    return pr, curr_chan * (curr_bits / 8) * curr_freq * 1000 * time * 60 // 2 ** 20
 
 
 def inf_counting_audio_time(problems_number):
