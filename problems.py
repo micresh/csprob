@@ -54,4 +54,6 @@ def inf_counting_image_colors(problems_number):
     ans = []
     return ans
 
+
 def inf_counting_passwords():
+    return
