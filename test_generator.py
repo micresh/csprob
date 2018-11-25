@@ -1,7 +1,5 @@
-from problems import numeric_notation_convert_number
+from vargenerator import gen_var
 
-question, answer = numeric_notation_convert_number(8, 10, 20, 33)
-print(question)
-print(answer)
 
+gen_var(100)
 
