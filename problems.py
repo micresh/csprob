@@ -50,11 +50,31 @@ def inf_counting_image_colors():
     return ans
 
 
-def inf_counting_passwords():
-    return
+def inf_counting_passwords(pass_count):
+    alph_length = np.random.randint(20, 48)
+    pass_length = np.random.randint(6, 18)
+    bits = np.log2(alph_length)
+    if bits != int(bits):
+        bits = int(bits) + 1
+    else:
+        bits = int(bits)
+    bites = pass_length * bits
+    if bites % 8 == 0:
+        bites //= 8
+    else:
+        bites = bites // 8 + 1
+    ans = pass_count * bites
+    pr = r"\item Для регистрации на сайте пользователю необходимо придумать пароль, состоящий из " \
+         + str(pass_length) + " символов. В качестве символов используются десятичные цифры и " + str(alph_length - 10)\
+         + " различных букв местного алфавита. Под хранение каждого пароля отводится минимально возможное " \
+           "целое количество байт, при этом кодирование символов осуществляется равномерным и минимально возможным " \
+           "количеством бит. Определите объем памяти в байтах, который занимает хранение " + str(pass_count)\
+         + " паролей."
+
+    return pr, ans
 
 
-def numeric_notation_convert_number(from_base=10, to_base=2, min_number=2, max_number=500):
+def numeric_notation_convert_number(from_base=10, to_base=2, min_number=20, max_number=500):
     gen_number = np.random.randint(min_number, max_number)
     res_number = convert_base(gen_number, to_base)
     pr = r"\item " + "$ " + convert_base(gen_number, from_base) + \
